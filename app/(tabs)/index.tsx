@@ -1,13 +1,18 @@
 import { ThemedText } from '@/components/themed-text';
-import { container } from '@/components/themed-container';
+import { HomeScreens} from '@/components/modal';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Colors } from '@/constants/theme';
 
 export default function HomeScreen() {
   return (
+   
+
+    <HomeScreens>
+      <ThemedText type='title'>Syncit this is testing</ThemedText>
     
-      <ThemedText type='title'>Syncit</ThemedText>
-    
+    </HomeScreens>
+      
+
       
 
   );
