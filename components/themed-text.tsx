@@ -45,10 +45,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+    fontFamily:'Inter',
     fontWeight: 'bold',
     lineHeight: 32,
-   
-    color: '#0a7ea4',
+    margin:'auto',
+    color: '#ffffff',
+    alignItems:'center',
+    justifyContent:'center'
    
   },
   subtitle: {
