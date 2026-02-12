@@ -2,11 +2,11 @@ import { ThemedText } from '@/components/themed-text';
 import { Text,View, ImageBackground, StyleSheet, StatusBar, Button, Alert, Pressable } from 'react-native';
 import { Checkbox } from 'expo-checkbox';
 import { useThemeColor } from '@/hooks/use-theme-color';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Colors } from '@/constants/theme';
 import { useState } from 'react';
 import * as Haptics from 'expo-haptics';
-
+import { Link } from 'expo-router';
 const image = {uri: 'https://i.ibb.co/1tHDmqwR/Theme-3.png'};
 
  
@@ -17,7 +17,7 @@ export default function HomeScreen() {
     <SafeAreaView style={{flex:1,alignItems: 'center', width:'100%',height:'100%', paddingTop:StatusBar.currentHeight ? StatusBar.currentHeight + 5 : 5, paddingLeft:5, paddingRight:10, backgroundColor:useThemeColor({},'background')}} edges={['left', 'right']}>
        
         <ImageBackground source={image} resizeMode='cover' style={{flex:0.18, borderRadius:20 , overflow: 'hidden',  alignItems:'center', width:'100%', height:'100%'}}></ImageBackground>
-        <Text style={{fontSize:30, fontWeight:'bold', marginTop:20, color:useThemeColor({},'text')}}>Welcome to SyncIt!</Text>
+        <Text style={{fontSize:30, fontWeight:'bold', marginTop:20, color:useThemeColor({},'text')}}>Your Synced task list</Text>
         <View style={styles.checkboxContainer}>
           
           <Checkbox
@@ -46,8 +46,12 @@ export default function HomeScreen() {
         
         </View>
         <Pressable style={styles.pressableStyle} onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}></Pressable>
-             </SafeAreaView>
+        
+        <Pressable style={styles.profile} onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)}><Link href="/modal"><Text>P</Text></Link> </Pressable>
+             
       
+       
+      </SafeAreaView>
      </SafeAreaProvider>
   );
 }
@@ -56,24 +60,33 @@ const styles = StyleSheet.create({
     padding:10,
     margin:10,
     marginTop:20
-  },
-  checkboxContainer:{
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',         
-  alignSelf: 'flex-start',
-  marginTop: 40,
-  paddingHorizontal: 20,
-  },
-  pressableStyle:{
-    borderRadius:50,
-    backgroundColor:"#c0a596",
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 30,
-    width:80,
-    height:80,
-    
-    
-  }
+   },
+    checkboxContainer:{
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    width: '100%',         
+    alignSelf: 'flex-start',
+    marginTop: 40,
+    paddingHorizontal: 20,
+    },
+    pressableStyle:{
+      borderRadius:50,
+      backgroundColor:"#c0a596",
+      position: 'absolute',
+      alignSelf: 'center',
+      bottom: '4%',
+      width:80,
+      height:80,
+      
+      
+    },
+    profile:{
+      borderRadius:50,
+      backgroundColor:"#f5e5dd",
+      position: 'absolute',
+      right: '20%',
+      bottom: '5%',
+      width:50,
+      height:50,
+    }
 })
