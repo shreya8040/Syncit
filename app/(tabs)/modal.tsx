@@ -1,17 +1,18 @@
+import { useThemeColor } from '@/hooks/use-theme-color';
 import { StyleSheet, Text, View } from 'react-native';
+
 
 export default function Modal() {
   return (
     <View style={styles.container}>
-      <Text>Profile info</Text>
+     <Text style={{fontSize:30, fontWeight:'bold', marginTop:20, color:"black"}}>Modal Screen</Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    right: '20%',
-      bottom: '5%',
-      width:50,
-      height:50,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
