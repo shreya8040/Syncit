@@ -1,10 +1,12 @@
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
+   const ref = useRef<CameraView>(null);
+  const [uri, setUri] = useState<string | null>(null);
 
   if (!permission) {
     // Camera permissions are still loading.
@@ -25,15 +27,24 @@ export default function App() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
 
+  const takePicture = async () => {
+    const photo = await ref.current?.takePictureAsync();
+    if (photo?.uri) setUri(photo.uri);
+  };
+
   return (
-    <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} />
+    
+      <View style={styles.container}>
+      <CameraView style={styles.camera} facing={facing} >
+        
+      </CameraView>
       <View style={styles.buttonContainer}>
         
           
         
       </View>
     </View>
+    
   );
 }
 
